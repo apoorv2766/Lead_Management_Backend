@@ -1,6 +1,8 @@
 const Lead = require("../models/leadModel");
 
-module.exports.createLead = async (req, res) => {
+
+//for creating a new lead
+const createLead = async (req, res) => {
   try {
     const {
       name,
@@ -52,7 +54,9 @@ module.exports.createLead = async (req, res) => {
   }
 };
 
-module.exports.getLeads = async (req, res) => {
+
+//for getting all leads with pagination
+const getLeads = async (req, res) => {
   try {
     let { page = 1, limit = 10 } = req.query;
     page = parseInt(page);
@@ -73,7 +77,9 @@ module.exports.getLeads = async (req, res) => {
   }
 };
 
-module.exports.updateLeadStatus = async (req, res) => {
+
+//for updating lead status
+const updateLeadStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
@@ -104,7 +110,9 @@ module.exports.updateLeadStatus = async (req, res) => {
   }
 };
 
-module.exports.deleteLead = async (req, res) => {
+
+//for deleting a lead
+const deleteLead = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -130,3 +138,6 @@ module.exports.deleteLead = async (req, res) => {
     });
   }
 };
+
+
+module.exports = { createLead, getLeads, updateLeadStatus, deleteLead };
